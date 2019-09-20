@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "ES5",
+    "jsx": "react",
+    "baseUrl": ".",
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}
