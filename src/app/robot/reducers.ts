@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
 
 import { RobotState, ORIENTATION } from "./types";
-import { RobotActions } from "./actions";
+import { RobotActions, ActionTypes, CommandTypes } from "./actions";
 import { getFacingDirection } from "../common/utils";
 
 export const initialState: RobotState = {
@@ -16,15 +16,12 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
   action
 ) => {
   switch (action.type) {
-    case "RESET": {
-      return initialState;
-    }
-    case "COMMAND": {
-      const commands = action.command.split(/[\s,]+/);
+    case ActionTypes.RUN_COMMAND: {
+      const commands = action.payload.comment.split(/[\s,]+/);
       const command = commands[0];
 
       switch (command) {
-        case "PLACE": {
+        case CommandTypes.PLACE: {
           const x = parseInt(commands[1]);
           const y = parseInt(commands[2]);
           const f = commands[3];
@@ -40,7 +37,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
             commands: [...state.commands, commands]
           };
         }
-        case "MOVE": {
+        case CommandTypes.MOVE: {
           return {
             ...state,
             ...(state.isPlaced && {
@@ -52,7 +49,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
             })
           };
         }
-        case "LEFT": {
+        case CommandTypes.LEFT: {
           return {
             ...state,
             ...(state.isPlaced && {
@@ -64,7 +61,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
             })
           };
         }
-        case "RIGHT": {
+        case CommandTypes.RIGHT: {
           return {
             ...state,
             ...(state.isPlaced && {
@@ -76,7 +73,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
             })
           };
         }
-        case "REPORT": {
+        case CommandTypes.REPORT: {
           return {
             ...state,
             ...(state.isPlaced && {
@@ -90,6 +87,9 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
           };
         }
       }
+    }
+    case ActionTypes.RESET: {
+      return initialState;
     }
     default: {
       return state;

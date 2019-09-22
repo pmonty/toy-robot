@@ -10,31 +10,32 @@
     "clean": "shx rm -rf ./.fusebox ./dist",
     "start": "yarn run clean && ts-node -T fuse",
     "dist": "yarn run clean && ts-node -T fuse dist",
-    "preview": "yarn run clean && ts-node -T fuse preview"
+    "preview": "yarn run clean && ts-node -T fuse preview",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@types/express": "^4.17.1",
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
     "@types/redux": "^3.6.0",
-    "express": "^4.17.1",
     "fuse-box": "^4.0.0-next.132",
+    "jest": "^24.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "shx": "^0.3.2",
     "terser": "^4.3.1",
     "ts-node": "^8.4.1",
-    "tslib": "^1.10.0",
-    "typesafe-actions": "^4.4.2"
+    "tslib": "^1.10.0"
   }
 }

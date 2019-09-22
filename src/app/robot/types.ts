@@ -12,7 +12,7 @@ export interface RobotState {
 
 // Map facing instruction
 export type Direction = "NORTH" | "SOUTH" | "WEST" | "EAST";
-export type Orientation = Record<Direction, Coordinate>;
+export type Orientation = Record<Direction | string, Coordinate>;
 export const ORIENTATION: Orientation = {
   NORTH: { x: 0, y: 1 },
   EAST: { x: 1, y: 0 },
