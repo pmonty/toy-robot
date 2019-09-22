@@ -1,25 +1,33 @@
-import { FuseBox, WebIndexPlugin } from "fuse-box";
-import * as express from "express";
+import { fusebox, sparky } from "fuse-box";
 
-const watch = process.argv.indexOf("--watch") > -1;
+class Context {
+  runServer;
+  getConfig = () =>
+    fusebox({
+      target: "browser",
+      entry: "src/index.tsx",
+      webIndex: {
+        template: "public/index.html"
+      },
+      cache: true,
+      devServer: this.runServer
+    });
+}
+const { task } = sparky<Context>(Context);
 
-const fuse = FuseBox.init({
-  homeDir: "src",
-  target: "browser@es5",
-  output: "dist/$name.js",
-  useJsNext: true,
-  useTypescriptCompiler: true,
-  plugins: [WebIndexPlugin({ template: "./public/index.html" })]
+task("default", async ctx => {
+  ctx.runServer = true;
+  const fuse = ctx.getConfig();
+  await fuse.runDev();
 });
 
-const app = fuse.bundle("app").instructions("> index.tsx");
-
-if (watch) {
-  const port = process.env.PORT == "" ? 3000 : parseInt(process.env.PORT);
-
-  fuse.dev({ open: true, port: port });
-
-  app.hmr().watch();
-}
-
-fuse.run();
+task("preview", async ctx => {
+  ctx.runServer = true;
+  const fuse = ctx.getConfig();
+  await fuse.runProd({ uglify: false });
+});
+task("dist", async ctx => {
+  ctx.runServer = false;
+  const fuse = ctx.getConfig();
+  await fuse.runProd({ uglify: false });
+});

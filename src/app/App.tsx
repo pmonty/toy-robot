@@ -1,3 +1,11 @@
 import * as React from "react";
 
-export const App: React.FunctionComponent<{}> = () => <p>Test</p>;
+const App: React.FunctionComponent<{}> = () => (
+  <div>
+    <p>Toy Robot React/Redux Implementation</p>
+    <input type="text" />
+    {/* <Command /> */}
+  </div>
+);
+
+export default App;
