@@ -1,6 +1,6 @@
 import { action } from "typesafe-actions";
 
-import { checkInput } from "app/utils/utils";
+import { checkInput } from "../../utils/utils";
 import { AsyncActionCreator } from "./types";
 
 export enum ActionTypes {

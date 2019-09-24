@@ -34,6 +34,7 @@ export const Command: React.FunctionComponent<CommandProps> = React.memo<
         <Col xl={{ size: "auto", offset: 1 }}>
           <Label for="command">Command</Label>
           <Input
+            data-testid="command-input"
             type="text"
             name="command"
             id="command"

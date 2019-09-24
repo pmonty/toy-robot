@@ -1,5 +1,5 @@
 import { ORIENTATION, RobotState, Coordinate } from "../components/robot/types";
-import { CommandTypes } from "app/components/robot/actions";
+import { CommandTypes } from "../components/robot/actions";
 
 export const getFacingDirection: any = ({ x, y }) => {
   const keys = Object.keys(ORIENTATION);

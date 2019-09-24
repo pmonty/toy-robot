@@ -16,6 +16,13 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
   action
 ) => {
   switch (action.type) {
+    case ActionTypes.ERROR: {
+      const { error } = action.payload;
+      return {
+        ...state,
+        log: [...state.log, error]
+      };
+    }
     case ActionTypes.RUN_COMMAND: {
       const { command } = action.payload;
       const commands = command.split(/[\s,]+/);
@@ -87,13 +94,6 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
           };
         }
       }
-    }
-    case ActionTypes.ERROR: {
-      const { error } = action.payload;
-      return {
-        ...state,
-        log: [...state.log, error]
-      };
     }
     case ActionTypes.RESET: {
       return initialState;
