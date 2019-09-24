@@ -7,8 +7,8 @@ export const CommandLog: React.FunctionComponent<CommandLogProps> = React.memo<
 >(({ log }) => {
   return (
     <div className="command-log">
-      {log.map(logItem => (
-        <p>{logItem}</p>
+      {log.map((logItem, i) => (
+        <p key={i}>{logItem}</p>
       ))}
     </div>
   );
