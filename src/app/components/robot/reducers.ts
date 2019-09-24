@@ -2,13 +2,13 @@ import { Reducer } from "redux";
 
 import { RobotState, ORIENTATION } from "./types";
 import { RobotActions, ActionTypes, CommandTypes } from "./actions";
-import { getFacingDirection } from "../common/utils";
+import { getFacingDirection } from "../../utils/utils";
 
 export const initialState: RobotState = {
   isPlaced: false,
   location: null,
-  facing: { x: 0, y: 1 },
-  commands: []
+  facing: null,
+  log: []
 };
 
 const robotReducer: Reducer<RobotState, RobotActions> = (
@@ -17,10 +17,10 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
 ) => {
   switch (action.type) {
     case ActionTypes.RUN_COMMAND: {
-      const commands = action.payload.comment.split(/[\s,]+/);
-      const command = commands[0];
+      const { command } = action.payload;
+      const commands = command.split(/[\s,]+/);
 
-      switch (command) {
+      switch (commands[0]) {
         case CommandTypes.PLACE: {
           const x = parseInt(commands[1]);
           const y = parseInt(commands[2]);
@@ -34,7 +34,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
               ...state.facing,
               ...ORIENTATION[f]
             },
-            commands: [...state.commands, commands]
+            log: [...state.log, command]
           };
         }
         case CommandTypes.MOVE: {
@@ -45,7 +45,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
                 x: state.location.x + state.facing.x,
                 y: state.location.y + state.facing.y
               },
-              commands: [...state.commands, commands]
+              log: [...state.log, command]
             })
           };
         }
@@ -57,7 +57,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
                 x: state.facing.y !== 0 ? -state.facing.y : 0,
                 y: state.facing.x
               },
-              commands: [...state.commands, commands]
+              log: [...state.log, command]
             })
           };
         }
@@ -69,7 +69,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
                 x: state.facing.y,
                 y: state.facing.x !== 0 ? -state.facing.x : 0
               },
-              commands: [...state.commands, commands]
+              log: [...state.log, command]
             })
           };
         }
@@ -77,8 +77,8 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
           return {
             ...state,
             ...(state.isPlaced && {
-              commands: [
-                ...state.commands,
+              log: [
+                ...state.log,
                 `Output: ${state.location.x}, ${
                   state.location.y
                 }, ${getFacingDirection(state.facing)}`
@@ -87,6 +87,13 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
           };
         }
       }
+    }
+    case ActionTypes.ERROR: {
+      const { error } = action.payload;
+      return {
+        ...state,
+        log: [...state.log, error]
+      };
     }
     case ActionTypes.RESET: {
       return initialState;

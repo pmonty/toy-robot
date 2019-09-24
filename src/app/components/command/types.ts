@@ -1,4 +1,4 @@
 export interface CommandProps {
-  runCommand: (command: string) => void;
+  handleCommand: (command: string) => void;
   reset: () => void;
 }
