@@ -1,11 +1,8 @@
-import { RobotState } from "../../../app/components/robot/types";
-import {
-  RobotActions,
-  ActionTypes
-} from "../../../app/components/robot/actions";
+import { RobotState } from "../../../app/reducers/robot/types";
+import { RobotActions, ActionTypes } from "../../../app/reducers/robot/actions";
 import robotReducer, {
   initialState
-} from "../../../app/components/robot/reducers";
+} from "../../../app/reducers/robot/reducers";
 
 describe("robot reducer test", () => {
   let state: RobotState = initialState;

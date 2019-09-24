@@ -2,7 +2,7 @@ import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import rootReducer, { ApplicationState } from "../reducers";
-import { RobotActions } from "../components/robot/actions";
+import { RobotActions } from "../reducers/robot/actions";
 
 export default () => {
   const middlewares = [thunk];

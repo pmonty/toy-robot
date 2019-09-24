@@ -2,7 +2,7 @@ import { Reducer } from "redux";
 
 import { RobotState, ORIENTATION } from "./types";
 import { RobotActions, ActionTypes, CommandTypes } from "./actions";
-import { getFacingDirection } from "../../utils/utils";
+import { getFacingDirection } from "../../utils/helpers";
 
 export const initialState: RobotState = {
   isPlaced: false,

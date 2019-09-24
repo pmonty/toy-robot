@@ -1,16 +1,16 @@
-# toy-robot
+# Toy-Robot Challenge
 
 React and Redux implementation of toy robot console application
 
 ## Tools
 
-[React](https://www.google.com "Google's Homepage")
-[Redux](https://www.google.com "Google's Homepage")
-[React-Redux](https://www.google.com "Google's Homepage")
-[TypeScript](https://www.google.com "Google's Homepage")
-[FuseBox](https://www.google.com "Google's Homepage")
-[Jest](https://www.google.com "Google's Homepage")
-[React-Testing-Library](https://www.google.com "Google's Homepage")
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org)
+- [React-Redux](https://react-redux.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [FuseBox](https://fuse-box.org/)
+- [Jest](https://jestjs.io)
+- [React-Testing-Library](https://testing-library.com/)
 
 ## Install
 
@@ -34,4 +34,4 @@ yarn run test
 
 ## TODO
 
-Grid/Table with robot animation using [React-Animation](https://www.google.com "Google's Homepage")
+- Grid/Table with robot animation using [React-Motion](https://github.com/chenglou/react-motion)

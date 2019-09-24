@@ -1,7 +1,7 @@
 import { ActionCreator } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { ApplicationState } from "../../reducers";
+import { ApplicationState } from "..";
 import { RobotActions } from "./actions";
 
 export interface Coordinate {
