@@ -11,8 +11,8 @@ const store = createStore();
 const App: React.FunctionComponent<{}> = () => (
   <Provider store={store}>
     <MainStyle />
-    <div>
-      <h3>Toy Robot</h3>
+    <div id="app-container">
+      <h1>Toy Robot</h1>
       <Command />
       <CommandLog />
     </div>

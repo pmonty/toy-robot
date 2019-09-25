@@ -11,7 +11,6 @@ export const Command: React.FunctionComponent<CommandProps> = React.memo<
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-
     updateCommand(e.target.value.toUpperCase());
   }, []);
 
@@ -20,18 +19,16 @@ export const Command: React.FunctionComponent<CommandProps> = React.memo<
       e.preventDefault();
 
       if (command.length === 0) return;
-
       handleCommand(command);
-
       updateCommand("");
     },
-    [command, handleCommand]
+    [command]
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <FormGroup row>
-        <Col xl={{ size: "auto", offset: 1 }}>
+        <Col xl={{ size: "auto" }}>
           <Label for="command">Command</Label>
           <Input
             data-testid="command-input"
@@ -46,8 +43,8 @@ export const Command: React.FunctionComponent<CommandProps> = React.memo<
 
       <FormGroup>
         <Row>
-          <Col xl={{ size: "auto", offset: 1 }}>
-            <Button color="primary" onClick={handleSubmit}>
+          <Col xl={{ size: "auto" }}>
+            <Button color="primary" type="submit">
               Run Command
             </Button>
           </Col>

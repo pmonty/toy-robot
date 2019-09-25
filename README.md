@@ -1,6 +1,6 @@
 # Toy-Robot Challenge
 
-React and Redux implementation of toy robot console application
+React and Redux implementation of toy robot console application.
 
 ## Tools
 
@@ -35,3 +35,8 @@ yarn run test
 ## TODO
 
 - Grid/Table with robot animation using [React-Motion](https://github.com/chenglou/react-motion)
+- Dockerfile setup [Docker](https://docs.docker.com/)
+- baseUrl and moduleResolution tidy up
+- fix command container test
+- UI for form and use Formik
+- Constants and helper functions

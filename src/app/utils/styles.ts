@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 export const main = `
-h3, .command-log {
-  padding-left: 3.5em;
+#app-container {
+  padding-left: 5rem;
 }
 `;
 

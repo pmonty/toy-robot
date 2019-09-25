@@ -7,7 +7,7 @@ test("shows command input", () => {
   const reset = jest.fn();
   const handleCommand = jest.fn();
 
-  const { getByText, getByTestId } = render(
+  const { getByText, getByTestId, container } = render(
     <Command handleCommand={handleCommand} reset={reset} />
   );
 

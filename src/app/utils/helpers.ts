@@ -37,7 +37,6 @@ export const checkInput: any = ({
       error = "Invalid place command.";
       return error;
     }
-    // TODO: Helper function checkCoordinates
     if (x > 4 || x < 0 || (y > 4 || y < 0)) {
       error = "Your coordinates are off the table.";
       return error;
@@ -56,7 +55,6 @@ export const checkInput: any = ({
         x: location.x + facing.x,
         y: location.y + facing.y
       };
-      // TODO: Helper function checkCoordinates
       if (
         nextLocation.x > 4 ||
         nextLocation.x < 0 ||

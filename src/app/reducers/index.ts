@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import robotReducer from "./robot/reducers";
+import robotReducer from "./robot/robot";
 import { RobotState } from "./robot/types";
 
 export interface ApplicationState {
