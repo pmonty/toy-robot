@@ -18,6 +18,7 @@ test("shows command input", () => {
   fireEvent.change(getByTestId("command-input"), {
     target: { value: "REPORT" }
   });
+  expect(getByTestId("command-input")).toHaveValue("REPORT");
   fireEvent.click(getByText("Run Command"));
   expect(handleCommand).toHaveBeenCalled();
 });

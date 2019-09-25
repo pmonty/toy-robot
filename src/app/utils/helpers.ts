@@ -1,11 +1,11 @@
-import { ORIENTATION, RobotState, Coordinate } from "../reducers/robot/types";
+import { FACING, RobotState, Coordinate } from "../reducers/robot/types";
 import { CommandTypes } from "../reducers/robot/actions";
 
 export const getFacingDirection: any = ({ x, y }) => {
-  const keys = Object.keys(ORIENTATION);
+  const keys = Object.keys(FACING);
 
-  return keys.find(k => {
-    const value = ORIENTATION[k];
+  return keys.find(f => {
+    const value = FACING[f];
 
     return value.x === x && value.y === y;
   });
@@ -41,7 +41,7 @@ export const checkInput: any = ({
       error = "Your coordinates are off the table.";
       return error;
     }
-    if (!ORIENTATION[f]) {
+    if (!FACING[f]) {
       error = "Invalid direction";
       return error;
     }

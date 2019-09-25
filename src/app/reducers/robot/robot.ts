@@ -1,6 +1,6 @@
 import { Reducer } from "redux";
 
-import { RobotState, ORIENTATION } from "./types";
+import { RobotState, FACING } from "./types";
 import { RobotActions, ActionTypes, CommandTypes } from "./actions";
 import { getFacingDirection } from "../../utils/helpers";
 
@@ -39,7 +39,7 @@ const robotReducer: Reducer<RobotState, RobotActions> = (
             location: { x, y },
             facing: {
               ...state.facing,
-              ...ORIENTATION[f]
+              ...FACING[f]
             },
             log: [...state.log, command]
           };
